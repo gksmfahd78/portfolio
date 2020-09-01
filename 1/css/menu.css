@@ -1,0 +1,130 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,700);
+/***** [Variables] *****/
+/* Geometry */
+/* Colors */
+/* Text */
+/* Mixins */
+/***** [Setup] *****/
+body {
+  font-family: "Raleway";
+  background: #E6E2B2;
+}
+
+.title {
+    text-align: center;
+    margin-top: 30%;
+    color: white;
+    font-size: 10;
+}
+
+.scene {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  perspective: 1800px;
+}
+
+.menu {
+  position: relative;
+  width: inherit;
+  height: inherit;
+  transform: rotateX(45deg) rotateZ(45deg);
+  transform-style: preserve-3d;
+  /***** [Menu open state] *****/
+  /* Show each layer's text */
+  /**** [Hover state] *****/
+  /***** [Layer styling] *****/
+}
+.menu input[type="checkbox"] {
+  visibility: hidden;
+}
+input[type="checkbox"]:checked ~ .menu__layer label .layer__content {
+  visibility: visible;
+}
+.menu input[type="checkbox"]:checked ~ .top {
+  transform: translate3d(-100px, 0, 40px);
+  /* Hide the menu icon */
+}
+.menu input[type="checkbox"]:checked ~ .top label .icon {
+  visibility: hidden;
+}
+.menu input[type="checkbox"]:checked ~ .middle {
+  transform: translate3d(0, 0, 40px);
+}
+.menu input[type="checkbox"]:checked ~ .bottom {
+  transform: translate3d(100px, 0, 40px);
+  /* Hide the shadow */
+}
+.menu input[type="checkbox"]:checked ~ .bottom:after {
+  visibility: hidden;
+}
+.menu:hover .menu__layer.top {
+  transform: translateZ(120px);
+}
+.menu:hover .menu__layer.middle {
+  transform: translateZ(80px);
+}
+.menu:hover .menu__layer.bottom {
+  transform: translateZ(40px);
+  /* Show the shadow */
+}
+.menu:hover .menu__layer.bottom:after {
+  visibility: visible;
+}
+.menu__layer {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  transition: all 200ms ease;
+}
+.menu__layer label {
+  position: relative;
+  display: inline-block;
+  width: inherit;
+  height: inherit;
+  cursor: pointer;
+}
+.menu__layer label .icon,
+.menu__layer label .layer__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #eee;
+}
+.menu__layer label .icon {
+  font-size: 50px;
+}
+.menu__layer label .layer__content {
+  visibility: hidden;
+  font-size: 20px;
+  font-weight: bold;
+}
+.menu__layer.top {
+  background-color: #EBB8A4;
+  z-index: 3;
+}
+.menu__layer.middle {
+  background-color: #37574B;
+  z-index: 2;
+}
+.menu__layer.bottom {
+  background-color: #AE585E;
+  z-index: 1;
+  /* Shadow */
+}
+.menu__layer.bottom:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  content: "\00a0";
+  visibility: hidden;
+  -webkit-box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.75);
+}
